@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Tabela produktów</h1>
+
+    <div th:if="${products == null}">
+        <p>Brak produktów</p>
+    </div>
+    <div th:if="${products != null}">
+        <table>
+            <thead>
+            <tr>
+                <th >Nazwa</th>
+                <th >Cena</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product:${products}">
+                <td th:text="${product.name}">Oranges</td>
+                <td th:text="${#numbers.formatDecimal(product.price, 1, 2)}">0.99</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
