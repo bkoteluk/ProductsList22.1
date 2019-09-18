@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<div th:fragment = "AddProduct">
+    <a class="btn btn-outline-secondary" href="/" role="button">Nowy produkt</a>
+</div>
+
+<div th:fragment = "ProductsList">
+    <a class="btn btn-outline-secondary" href="/lista" role="button">Lista produktów</a>
+</div>
+
+<div th:fragment = "ProductsTable">
+    <a class="btn btn-outline-secondary" href="/tabela" role="button">Tabela produktów</a>
+</div>
+
+<div th:fragment = "List">
+    <div>
+        <div th:if="${products.isEmpty()}">
+            <br/>
+            <p>Brak produktów</p>
+        </div>
+        <div th:unless="${products.isEmpty()}">
+            <div th:each="product:${products}">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span th:text="|${product.name}|" ></span><span class="badge badge-secondary badge-pill" th:text = "${product.price}" ></span>
+                </li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <div >
+                <p th:text="|Suma cen produktów: ${sum}|"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:fragment = "Table">
+<div>
+    <div th:if="${products.isEmpty()}">
+        <br/>
+        <p>Brak produktów</p>
+    </div>
+    <div th:unless="${products.isEmpty()}">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th >Nazwa</th>
+                <th >Cena</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product:${products}">
+                <td th:text="${product.name}"></td>
+                <td th:text="${#numbers.formatDecimal(product.price, 1, 2)}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" th:text="|Suma cen produktów: ${sum}|"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+<div th:fragment="New">
+    <div>
+        <br/>
+        <div>
+            <form  method="post" action="/add">
+                <input type = text name="name" placeholder="Nazwa produktu">
+                <input type="number" name = "price" placeholder="0,00">
+                <input type = submit value="Dodaj">
+            </form>
+        </div>
+    </div>
+</div>
+
+</html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th ="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Tabela</title>
+    <title>Nowy produkt</title>
     <style>
         body {
             margin-right: 150px;
@@ -13,12 +13,13 @@
 </head>
 <body>
 <div class = "row">
-    <div th:replace="sidesections::AddProduct"></div>
     <div th:replace="sidesections::ProductsList"></div>
+    <div th:replace="sidesections::ProductsTable"></div>
 </div>
 <br/>
-<h1>Tabela produktów</h1>
+<h1>Dodawanie nowego produktu</h1>
 <br/>
-<div th:replace="sidesections::Table"></div>
+<div th:replace="sidesections::New"></div>
+
 </body>
 </html>
