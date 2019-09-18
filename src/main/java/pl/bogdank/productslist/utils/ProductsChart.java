@@ -7,7 +7,7 @@ import java.util.List;
 public class ProductsChart {
 
     public static double sum(List<Product> products) {
-        int sum = 0;
+        double sum = 0;
         for (Product product : products) {
             sum += product.getPrice();
         }
