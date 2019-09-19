@@ -19,6 +19,35 @@
 <br/>
 <h1>Tabela produktów</h1>
 <br/>
+<!--
 <div th:replace="sidesections::Table"></div>
+-->
+
+<div>
+    <div th:if="${products.isEmpty()}">
+        <br/>
+        <p>Brak produktów</p>
+    </div>
+    <div th:unless="${products.isEmpty()}">
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th >Nazwa</th>
+                <th >Cena</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product:${products}">
+                <td th:text="${product.name}"></td>
+                <td th:text="${#numbers.formatDecimal(product.price, 1, 2)}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" th:text="|Suma cen produktów: ${sum}|"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 </body>
 </html>
